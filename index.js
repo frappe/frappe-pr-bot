@@ -21,7 +21,7 @@ module.exports = app => {
    * @param {Object} context Object sent in by the github webhook
    */
   let verify_pr_branch = (context) => {
-    invalid_pr_branches = ['master', 'staging', 'develop']
+    invalid_pr_branches = ['master', 'staging']
     const pr_on_branch  = context.payload.pull_request.base.ref;
 
     if ( invalid_pr_branches.includes(pr_on_branch) ){
