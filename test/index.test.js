@@ -3,9 +3,9 @@ const { Application } = require('probot')
 // Requiring our app implementation
 const myProbotApp = require('..')
 
-const PRtoDevelopPayload = require('./fixtures/pull_request_to_develop.json')
-const PRtoMasterPayload  = require('./fixtures/pull_request_to_master.json')
-const PRtoStagingPayload = require('./fixtures/pull_request_to_staging.json')
+const pullRequestToDevelopPayLoad = require('./fixtures/pull_request_to_develop.json')
+const pullRequestToMasterPayLoad = require('./fixtures/pull_request_to_master.json')
+const pullRequestToStagingPayLoad = require('./fixtures/pull_request_to_staging.json')
 
 test('that we can run tests', () => {
   // your real tests go here
@@ -23,7 +23,7 @@ describe('My Probot app', () => {
     github = {
       issues: {
         createComment: jest.fn().mockReturnValue(Promise.resolve({})),
-        edit         : jest.fn().mockReturnValue(Promise.resolve({}))
+        edit: jest.fn().mockReturnValue(Promise.resolve({}))
       }
     }
     // Passes the mocked out GitHub API into out app instance
@@ -34,7 +34,7 @@ describe('My Probot app', () => {
     // Simulates delivery of an pull_request.opened webhook
     await app.receive({
       name: 'pull_request.opened',
-      payload: PRtoDevelopPayload
+      payload: pullRequestToDevelopPayLoad
     })
   })
 
@@ -42,7 +42,7 @@ describe('My Probot app', () => {
     // Simulates delivery of an pull_request.opened webhook
     await app.receive({
       name: 'pull_request.opened',
-      payload: PRtoMasterPayload
+      payload: pullRequestToMasterPayLoad
     })
 
     // This test passes if the code in your index.js file calls `context.github.issues.createComment`
@@ -54,7 +54,7 @@ describe('My Probot app', () => {
     // Simulates delivery of an pull_request.opened webhook
     await app.receive({
       name: 'pull_request.opened',
-      payload: PRtoStagingPayload
+      payload: pullRequestToStagingPayLoad
     })
 
     // This test passes if the code in your index.js file calls `context.github.issues.createComment`
