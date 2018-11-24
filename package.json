@@ -21,7 +21,9 @@
     "commit": "npx git-cz"
   },
   "dependencies": {
-    "probot": "^7.2.0"
+    "probot": "^7.2.0",
+    "sequelize": "^4.41.2",
+    "sqlite3": "^4.0.4"
   },
   "devDependencies": {
     "jest": "^22.4.3",

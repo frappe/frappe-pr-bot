@@ -7,6 +7,8 @@ const pullRequestToDevelopPayLoad = require('./fixtures/pull_request_to_develop.
 const pullRequestToMasterPayLoad = require('./fixtures/pull_request_to_master.json')
 const pullRequestToStagingPayLoad = require('./fixtures/pull_request_to_staging.json')
 
+const issueCommentCreatedPayLoad = require('./fixtures/issue_comment_created.json')
+
 test('that we can run tests', () => {
   // your real tests go here
   expect(1 + 2 + 3).toBe(6)
@@ -23,7 +25,7 @@ describe('My Probot app', () => {
     github = {
       issues: {
         createComment: jest.fn().mockReturnValue(Promise.resolve({})),
-        edit: jest.fn().mockReturnValue(Promise.resolve({}))
+        update: jest.fn().mockReturnValue(Promise.resolve({}))
       }
     }
     // Passes the mocked out GitHub API into out app instance
@@ -47,7 +49,7 @@ describe('My Probot app', () => {
 
     // This test passes if the code in your index.js file calls `context.github.issues.createComment`
     expect(github.issues.createComment).toHaveBeenCalled()
-    expect(github.issues.edit).toHaveBeenCalled()
+    expect(github.issues.update).toHaveBeenCalled()
   })
 
   test('creates a comment and closes PR when its opened on staging', async () => {
@@ -59,7 +61,17 @@ describe('My Probot app', () => {
 
     // This test passes if the code in your index.js file calls `context.github.issues.createComment`
     expect(github.issues.createComment).toHaveBeenCalled()
-    expect(github.issues.edit).toHaveBeenCalled()
+    expect(github.issues.update).toHaveBeenCalled()
+  })
+
+  test('checkout to a PR', async () => {
+    await app.receive({
+      name: 'issue_comment.created',
+      payload: issueCommentCreatedPayLoad
+    })
+
+    // This test passes if the code in your index.js file calls `context.github.issues.createComment`
+    expect(github.issues.update).toHaveBeenCalled()
   })
 })
 

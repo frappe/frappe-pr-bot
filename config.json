@@ -1,0 +1,16 @@
+{
+  "allowed_users": [
+    "rmehta",
+    "nabinhait",
+    "netchampfaris",
+    "codingcoffee",
+    "rohitwaghchaure"
+  ],
+  "star_domain": "*.pr.codingcoffee.me",
+  "db_host": "localhost",
+  "db_dialect": "sqlite",
+  "db_name": "frappe-pr-bot",
+  "db_username": "frappe",
+  "db_password": "starlight",
+  "frappe_bench_pattern": "{py}-bench-{number}"
+}
