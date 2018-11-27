@@ -1,8 +1,8 @@
 
-const fs = require('fs')
+const file = require('./fileutils')
 
-module.export = {
+module.exports = {
   get_config: () => {
-    return JSON.parse(fs.readFileSync('config.json'))
+    return JSON.parse(file.read('config.json'))
   }
 }

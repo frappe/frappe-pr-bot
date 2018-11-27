@@ -1,5 +1,5 @@
-const utils = require('./utils/utils')
 
+const utils = require('./utils/utils')
 const { verifyAndCreateInstance, verifyPullRequestBranch } = utils
 
 // This is the entry point for your Probot App.
@@ -8,6 +8,8 @@ const { verifyAndCreateInstance, verifyPullRequestBranch } = utils
 module.exports = app => {
   // Logging the start
   app.log('Alright people, we\'re functional!, Let\' do this')
+
+  app.log('Database up and running')
 
   // Triggered when a Pull Request is Opened or Reopened
   app.on(['pull_request.opened', 'pull_request.reopened'], async context => {

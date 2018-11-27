@@ -1,4 +1,3 @@
-const fs = require('fs')
 
 module.exports = {
 
@@ -43,8 +42,20 @@ module.exports = {
   },
 
   verifyAndCreateInstance: (context) => {
-    let config = JSON.parse(fs.readFileSync('config.json'))
-    console.log(config)
+    const request = require('request')
+    const config = require('./config').get_config()
+    const { mainSite } = config
+    request.post(`${mainSite}/api/method/prbot.prbot.doctype.prbot_bench.prbot_bench.issue_comment_created`, {form: {key: context}})
+
+    // // Incase we come back to JS
+    // const config = require('./config').get_config()
+    // const user = context.payload.issue.user.login
+    // const comment = context.payload.comment.body
+
+    // if (!config.allowed_users.includes(context.comment.user.login)) return
+    // if (!comment === '@frappe-bot create instance') return
+
+    // const bench = getFreeBench()
   }
 
 }
