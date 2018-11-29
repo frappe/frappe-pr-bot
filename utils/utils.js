@@ -44,8 +44,10 @@ module.exports = {
   verifyAndCreateInstance: (context) => {
     const request = require('request')
     const config = require('./config').get_config()
-    const { mainSite } = config
-    request.post(`${mainSite}/api/method/prbot.prbot.doctype.prbot_bench.prbot_bench.issue_comment_created`, {form: {key: context}})
+    const main_site = config.main_site
+    console.log(main_site)
+    console.log(context)
+    request.post({url: main_site + `/api/method/prbot.prbot.doctype.prbot_bench.prbot_bench.issue_comment_created`, form: {context: JSON.stringify(context)}})
 
     // // Incase we come back to JS
     // const config = require('./config').get_config()

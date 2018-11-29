@@ -12,11 +12,12 @@ module.exports = app => {
   app.log('Database up and running')
 
   // Triggered when a Pull Request is Opened or Reopened
-  app.on(['pull_request.opened', 'pull_request.reopened'], async context => {
-    verifyPullRequestBranch(context)
-  })
+  // app.on(['pull_request.opened', 'pull_request.reopened'], async context => {
+  //   verifyPullRequestBranch(context)
+  // })
 
   app.on(['issue_comment.created'], async context => {
+    console.log("verifyAndCreateInstance")
     verifyAndCreateInstance(context)
   })
 }

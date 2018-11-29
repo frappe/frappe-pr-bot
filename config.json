@@ -12,5 +12,5 @@
   "db_username": "frappe",
   "db_password": "starlight",
   "frappe_bench_pattern": "{py}-bench-{number}",
-  "main_site": "http://main.pr.codingcoffee.me:8000"
+  "main_site": "http://foobar.prbot:8000"
 }
